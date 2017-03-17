@@ -1,15 +1,8 @@
 #include <iostream>
-
-using namespace std;
+#include "Person.h"
 
 int main()
 {
- int
- x
- =
- 142;
- cout
- <<
- x;
-
+nameGenerator::Person a;
+a.DisplayInfo();
 }
