@@ -1,3 +1,3 @@
 # challenges
 
-![list of challenges](programming challenges.jpg?raw=true "Challenge list")
+![list of challenges](https://github.com/shahar23/challenges/blob/master/programming%20challenges.jpg)
