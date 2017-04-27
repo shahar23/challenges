@@ -12,8 +12,10 @@ Person::Person()
     m_age = rand()%99;
     m_is_male = rand()%2;
     m_height = rand()%200;
+    int tmp_work = rand() %5+1;
     m_work = static_cast<Job>(rand() %5+1);
 }
+
 
 void Person::DisplayInfo()
 {
@@ -29,8 +31,8 @@ void Person::DisplayInfo()
         std::cout<< "Female"<< std::endl;
     }
     std::cout<<"Age: " << this->m_age << std::endl;
-    std::cout<<"Height: " << this->m_height/100 << std::endl;
-    std::cout<<"Job: " << this->m_work << std::endl;
+    std::cout<<"Height: " << this->m_height << " cm" << std::endl;
+    std::cout<<"Job: " << this->m_work;
 }
 
 Person::~Person()
