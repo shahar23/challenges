@@ -7,25 +7,27 @@ namespace nameGenerator
 Person::Person()
 {
     std::srand(time(NULL));
-    m_age = rand()%99;
+    m_age = rand()%99+1;
     m_is_male = rand()%2;
     m_height = rand()%40+150;
     m_work = static_cast<Job>(rand() %5+1);
-    m_name = m_getNameFromFile(true);
+    m_name = m_getNameFromFile(m_is_male);
 }
 
 std::string Person::m_getNameFromFile(bool is_male)
 {
-    std::fstream m_male_names; // file contains 4275 female names row by row
-    std::fstream m_female_names; // file contains 4275 female names row by row
-    int name_row = rand()%4274+1;
+    std::fstream m_male_names; 
+    const int male_names = 4275; // file contains 4275 male names row by row
+    std::fstream m_female_names; 
+    const int female_names = 4275; // file contains 4275 female names row by row
     std::string name;
     if(is_male == true)
     {
+		int name_row = (rand()%male_names);
         m_male_names.open("males.txt");
         if (m_male_names.is_open())
         {
-            for(int i=0; i<name_row; i++)
+            for(int i=0; i<=name_row; i++)
             {
                 std::getline(m_male_names, name);
             }
@@ -33,15 +35,16 @@ std::string Person::m_getNameFromFile(bool is_male)
         }
         else
         {
-            std::cout << "Error opening file";
+            std::cout << "Error opening males file";
         }
     }
     else
     {
+		int name_row = (rand()%female_names);
         m_female_names.open("females.txt");
         if (m_female_names.is_open())
         {
-            for(int i=0; i<name_row; i++)
+            for(int i=0; i<=name_row; i++)
             {
                 std::getline(m_female_names, name);
             }
@@ -49,11 +52,10 @@ std::string Person::m_getNameFromFile(bool is_male)
         }
         else
         {
-            std::cout << "Error opening file";
+            std::cout << "Error opening females file";
         }
     }
     return name;
-
 }
 std::string Person::m_displayJob()
 {
@@ -65,7 +67,7 @@ std::string Person::m_displayJob()
     if(m_work==Writer) return "Writer";
     if(m_work==Soldier) return "Soldier";
     if(m_work==Policeman) return "Policeman";
-
+	return "";
 }
 void Person::DisplayInfo()
 {

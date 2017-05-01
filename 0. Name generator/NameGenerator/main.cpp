@@ -2,6 +2,6 @@
 
 int main()
 {
-    nameGenerator::Person a;
-    a.DisplayInfo();
+    nameGenerator::Person foo;
+    foo.DisplayInfo();
 }
