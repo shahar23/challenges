@@ -20,6 +20,23 @@ int headtails()
     if(tmp==1)  std::cout<<"Tails"<<std::endl;
     return 0;
 }
+
+int hilowresults(int &range, int &lower_upper_bound, int &start_from, int &result)
+{
+    if(range%2==0)
+    {
+        lower_upper_bound = range/2;
+        start_from = 1;
+        result = rand()%range+start_from;
+    }
+    else
+    {
+        lower_upper_bound = (range-1)/2;
+        start_from = 0;
+        result = rand()%(range+1);
+    }
+    return 0;
+}
 int higherlower()
 {
     int range=0;
@@ -29,21 +46,11 @@ int higherlower()
         std::cin>>range;
     }
     int lower_upper_bound, start_from, result;
-    if(range%2==0)
-    {
-        lower_upper_bound = range/2;
-        start_from = 1;
-        result = rand()%range+start_from;
-    }
-    else
-    {//3
-        lower_upper_bound = (range-1)/2;//1
-        start_from = 0;
-        result = rand()%(range+1);//4 = 0-3
-    }
+    hilowresults(range, lower_upper_bound, start_from, result);
+
     std::cout<< "Range is between " << start_from << " and " << range << std::endl;
-    std::cout<< "Lower is between " << start_from << "(including) and " << lower_upper_bound << "(including)" << std::endl;
-    std::cout<< "Higher is between " << lower_upper_bound+1 << "(including) and " << range << "(including) \n"  << std::endl;
+    std::cout<< "Lower is between " << start_from << " (including) and " << lower_upper_bound << " (including)" << std::endl;
+    std::cout<< "Higher is between " << lower_upper_bound+1 << " (including) and " << range << " (including) \n"  << std::endl;
     std::cout<< "Result is " << result << " so it is ";
     if(result<=lower_upper_bound)
     {
@@ -53,14 +60,13 @@ int higherlower()
     {
         std::cout<<"Higher \n"<< std::endl;
     }
-
         return 0;
 }
 
 int startGUIMode()
 {
     std::cout<<"Started GUI mode"<< std::endl;
-    sf::RenderWindow window(sf::VideoMode(800, 600, 32), "title");
+    sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Higher&Lower / Head&Tails");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
