@@ -65,8 +65,8 @@ int higherlower()
 
 int startGUIMode()
 {
-    std::cout<<"Started GUI mode"<< std::endl;
-    sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Higher&Lower / Head&Tails");
+    std::cout<<"GUI not ready yet"<< std::endl;
+    sf::RenderWindow window(sf::VideoMode(800, 600, 32), "Higher&Lower / Head&Tails - GUI not ready yet");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
